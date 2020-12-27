@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class EntryViewController: UIViewController, UITextFieldDelegate {
     
@@ -31,15 +32,47 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func didTapSaveButton() {
-        guard let taskName = taskTextField.text else {
+        guard let taskName = taskTextField.text, !taskName.isEmpty else {
             return
-        }
-        if !taskName.isEmpty {
-            print(taskName)
         }
         
         CoreDataManager.shared.insertTask(taskName: taskName, dueDate: dueDate.date, completion: completionHandler)
-
+        
+        // UserNotification
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] (success, error) in
+            guard let strongSelf = self else {
+                return
+            }
+            if success {
+                print("auth success!")
+                DispatchQueue.main.async {
+                    // setting, triger, request user notification
+                    strongSelf.scheduleTest(taskName: taskName, dueDate: strongSelf.dueDate.date)
+                }
+            }
+        }
+        
         navigationController?.popViewController(animated: true)
+    }
+    
+    func scheduleTest(taskName: String, dueDate: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = taskName
+        content.sound = .default
+        //content.badge = 1
+        content.body = "It's almost close to deadline!"
+        
+        let targetDate = Date().addingTimeInterval(10)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second],
+                                                                                                  from: targetDate),
+                                                    repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+            if error != nil {
+                print("something went wrong")
+            }
+        })
     }
 }
