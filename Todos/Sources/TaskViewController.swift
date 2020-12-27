@@ -17,7 +17,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     
     func configure(model: Task) {
         self.model = model
-        print(model)
+        //CoreDataManager.shared.filteredRequest(id: model.name ?? "task10", completion: nil)
     }
     
     override func viewDidLoad() {
@@ -37,6 +37,15 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         }
         
         CoreDataManager.shared.deleteTask(object: model, completion: completionHandler)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func didTapUpdateButton() {
+        // update Task
+        guard let text = taskNameTextField.text, let id = model?.name else {
+            return
+        }
+        CoreDataManager.shared.updatetask(id: id, taskName: text, dueDate: Date(), completion: completionHandler)
         navigationController?.popViewController(animated: true)
     }
 }

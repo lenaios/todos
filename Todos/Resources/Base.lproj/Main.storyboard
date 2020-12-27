@@ -178,6 +178,17 @@
                                     <constraint firstAttribute="height" constant="52" id="tGz-xh-A9Y"/>
                                 </constraints>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="go4-SM-HcJ">
+                                <rect key="frame" x="342" y="372" width="52" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GAj-8G-Xn2"/>
+                                    <constraint firstAttribute="width" constant="52" id="qqX-Cw-rmY"/>
+                                </constraints>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="didTapUpdateButton" destination="Yps-AF-QzO" eventType="touchUpInside" id="1DQ-TL-Are"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8lm-nN-iOV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -189,9 +200,11 @@
                             <constraint firstItem="HUs-Zm-ESV" firstAttribute="top" secondItem="auw-EP-gk1" secondAttribute="bottom" constant="10" id="BVT-m1-2SW"/>
                             <constraint firstItem="auw-EP-gk1" firstAttribute="leading" secondItem="8lm-nN-iOV" secondAttribute="leading" constant="20" id="DAu-OZ-lpN"/>
                             <constraint firstItem="xpy-PN-QYC" firstAttribute="top" secondItem="zAn-ln-3hK" secondAttribute="bottom" constant="20" id="RJU-X3-t2M"/>
+                            <constraint firstItem="go4-SM-HcJ" firstAttribute="top" secondItem="xpy-PN-QYC" secondAttribute="bottom" constant="30" id="ToB-xw-Arq"/>
                             <constraint firstItem="zAn-ln-3hK" firstAttribute="top" secondItem="HUs-Zm-ESV" secondAttribute="bottom" constant="40" id="dsD-NA-7sw"/>
                             <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="xpy-PN-QYC" secondAttribute="trailing" constant="20" id="fm8-56-7wp"/>
                             <constraint firstItem="auw-EP-gk1" firstAttribute="top" secondItem="8lm-nN-iOV" secondAttribute="top" constant="20" id="mjJ-4U-Qym"/>
+                            <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="go4-SM-HcJ" secondAttribute="trailing" constant="20" id="qJs-d5-9U1"/>
                             <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="HUs-Zm-ESV" secondAttribute="trailing" constant="20" id="rUQ-ew-W45"/>
                             <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="auw-EP-gk1" secondAttribute="trailing" constant="20" id="zwq-6x-lP4"/>
                         </constraints>

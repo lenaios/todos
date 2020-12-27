@@ -27,8 +27,6 @@ class CoreDataManager {
     
     @discardableResult
     func insertTask(taskName: String, dueDate: Date, completion: (() -> Void)?) -> Bool { // Task 객체로 받을 수 없나?
-        
-        //let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Task", in: context)
         if let entity = entity {
             let task = NSManagedObject(entity: entity, insertInto: context)
@@ -55,8 +53,36 @@ class CoreDataManager {
             completion?()
             return true
         } catch {
+            print(error.localizedDescription)
             return false
         }
+    }
+    
+    @discardableResult
+    func updatetask(id: String, taskName: String, dueDate: Date, completion: (() -> Void)?) -> Bool {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult>
+            = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", NSString(string: id))
+        print("updating: \(fetchRequest)")
+        
+        do {
+            let fetchData = try context.fetch(fetchRequest)
+            let task = fetchData[0] as! NSManagedObject
+            task.setValue(taskName, forKey: "name")
+            task.setValue(dueDate, forKey: "dueDate")
+            do {
+                try context.save()
+                completion?()
+                print("Task Update Success")
+            } catch {
+                print(error.localizedDescription)
+                return false
+            }
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+        return true
     }
 }
 
