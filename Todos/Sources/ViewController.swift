@@ -10,8 +10,6 @@ import CoreData
 
 class ViewController: UIViewController {
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-  
     var taskData = [Task]()
     
     // date dateFormatter
@@ -22,6 +20,7 @@ class ViewController: UIViewController {
     }()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,6 @@ class ViewController: UIViewController {
         //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         fetchTasks()
-
     }
     
     func fetchTasks() {
@@ -45,6 +43,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapAddButton() {
+//        guard let entryVC = storyboard?.instantiateViewController(identifier: "entry") as? EntryViewController else { return }
+//        navigationController?.pushViewController(entryVC, animated: true)
+//        entryVC.completionHandler = { [weak self] in self?.fetchTasks() }
+    }
+    
+    @IBAction func didTapTextField() {
         guard let entryVC = storyboard?.instantiateViewController(identifier: "entry") as? EntryViewController else { return }
         navigationController?.pushViewController(entryVC, animated: true)
         entryVC.completionHandler = { [weak self] in self?.fetchTasks() }
@@ -87,6 +91,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 62.0
     }
 }

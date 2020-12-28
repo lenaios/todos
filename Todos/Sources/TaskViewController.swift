@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskViewController: UIViewController, UITextFieldDelegate {
+class TaskViewController: UIViewController {
 
     var model: Task?
     var completionHandler: (() -> Void)?
@@ -17,12 +17,11 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     
     func configure(model: Task) {
         self.model = model
-        //CoreDataManager.shared.filteredRequest(id: model.name ?? "task10", completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //taskNameTextField.delegate = self // 수정을 위한
+        
         guard let task = model else {
             return
         }
