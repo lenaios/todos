@@ -194,16 +194,6 @@
                                     <constraint firstAttribute="height" constant="52" id="tGz-xh-A9Y"/>
                                 </constraints>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="go4-SM-HcJ">
-                                <rect key="frame" x="343" y="372" width="51" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="x88-gl-t6H"/>
-                                </constraints>
-                                <state key="normal" title="Update"/>
-                                <connections>
-                                    <action selector="didTapUpdateButton" destination="Yps-AF-QzO" eventType="touchUpInside" id="1DQ-TL-Are"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8lm-nN-iOV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -217,10 +207,7 @@
                             <constraint firstItem="xpy-PN-QYC" firstAttribute="top" secondItem="zAn-ln-3hK" secondAttribute="bottom" constant="20" id="RJU-X3-t2M"/>
                             <constraint firstItem="zAn-ln-3hK" firstAttribute="top" secondItem="HUs-Zm-ESV" secondAttribute="bottom" constant="40" id="dsD-NA-7sw"/>
                             <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="xpy-PN-QYC" secondAttribute="trailing" constant="20" id="fm8-56-7wp"/>
-                            <constraint firstItem="go4-SM-HcJ" firstAttribute="top" secondItem="xpy-PN-QYC" secondAttribute="bottom" constant="30" id="g91-if-vYR"/>
-                            <constraint firstItem="go4-SM-HcJ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8lm-nN-iOV" secondAttribute="leading" constant="343" id="j54-6w-JLx"/>
                             <constraint firstItem="auw-EP-gk1" firstAttribute="top" secondItem="8lm-nN-iOV" secondAttribute="top" constant="20" id="mjJ-4U-Qym"/>
-                            <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="go4-SM-HcJ" secondAttribute="trailing" constant="20" id="o9b-K0-jlj"/>
                             <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="HUs-Zm-ESV" secondAttribute="trailing" constant="20" id="rUQ-ew-W45"/>
                             <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="auw-EP-gk1" secondAttribute="trailing" constant="20" id="zwq-6x-lP4"/>
                         </constraints>

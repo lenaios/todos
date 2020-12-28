@@ -34,7 +34,6 @@ class CoreDataManager {
             task.setValue(dueDate, forKey: "dueDate")
             do {
                 try context.save()
-                print("Task Insert Success")
                 completion?()
             } catch {
                 print(error.localizedDescription)
@@ -49,7 +48,6 @@ class CoreDataManager {
         self.context.delete(object)
         do{
             try self.context.save()
-            print("Task Delete Success")
             completion?()
             return true
         } catch {
@@ -73,7 +71,6 @@ class CoreDataManager {
             do {
                 try context.save()
                 completion?()
-                print("Task Update Success")
             } catch {
                 print(error.localizedDescription)
                 return false

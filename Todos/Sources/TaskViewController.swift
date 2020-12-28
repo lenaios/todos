@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskViewController: UIViewController {
+class TaskViewController: UIViewController, UITextFieldDelegate {
 
     var model: Task?
     var completionHandler: (() -> Void)?
@@ -21,6 +21,7 @@ class TaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        taskNameTextField.delegate = self
         
         guard let task = model else {
             return
@@ -39,12 +40,14 @@ class TaskViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func didTapUpdateButton() {
+    // MARK:  - UITextFieldDelegate
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         // update Task
         guard let text = taskNameTextField.text, let id = model?.name else {
-            return
+            return false
         }
         CoreDataManager.shared.updatetask(id: id, taskName: text, dueDate: Date(), completion: completionHandler)
         navigationController?.popViewController(animated: true)
+        return true
     }
 }
