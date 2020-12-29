@@ -7,6 +7,15 @@
 
 import UIKit
 
+/*
+ 
+ 1. tasknameTextField view hierachy
+    #issue   테이블뷰 스크롤했을 때 네비게이션바가 TextField를 덮고 내려옴
+    #resolve - view 서브 뷰에서 테이블뷰 헤더로 지정합니다.
+             - 텍스트필드에 오토레이아웃을 지정하기 위해서 헤더에 빈 뷰를 하나 둔 뒤 해당 뷰의 서브 뷰로 추가하여 제약조건 추가
+ 
+ */
+
 class TaskViewController: UIViewController, UITextFieldDelegate {
 
     var model: Task?
