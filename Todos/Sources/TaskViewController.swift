@@ -49,9 +49,7 @@ extension TaskViewController {
 // MARK: - Actions
 extension TaskViewController {
     @objc func deleteTask() {
-        guard let model = model else {
-            return
-        }
+        guard let model = model else { return }
         CoreDataManager.shared.deleteTask(object: model, completion: completionHandler)
         navigationController?.popViewController(animated: true)
     }
@@ -61,7 +59,8 @@ extension TaskViewController {
 extension TaskViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         // update Task
-        guard let text = taskNameTextField.text, let id = model?.name else {
+        guard let text = taskNameTextField.text,
+              let id = model?.name else {
             return false
         }
         CoreDataManager.shared.updatetask(id: id, taskName: text, dueDate: Date(), completion: completionHandler)
