@@ -19,6 +19,11 @@ extension Task {
     @NSManaged public var dueDate: Date?
     @NSManaged public var name: String?
 
+    enum Key: String {
+        case name = "name"
+        case dueDate = "dueDate"
+    }
+    
 }
 
 extension Task : Identifiable {

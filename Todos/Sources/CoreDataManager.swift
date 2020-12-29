@@ -30,8 +30,8 @@ class CoreDataManager {
         let entity = NSEntityDescription.entity(forEntityName: "Task", in: context)
         if let entity = entity {
             let task = NSManagedObject(entity: entity, insertInto: context)
-            task.setValue(taskName, forKey: "name")
-            task.setValue(dueDate, forKey: "dueDate")
+            task.setValue(taskName, forKey: Task.Key.name.rawValue)
+            task.setValue(dueDate, forKey: Task.Key.dueDate.rawValue)
             do {
                 try context.save()
                 completion?()
@@ -59,15 +59,15 @@ class CoreDataManager {
     @discardableResult
     func updatetask(id: String, taskName: String, dueDate: Date, completion: (() -> Void)?) -> Bool {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult>
-            = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+            = NSFetchRequest<NSFetchRequestResult>(entityName: Task.Key.dueDate.rawValue)
         fetchRequest.predicate = NSPredicate(format: "name = %@", NSString(string: id))
         print("updating: \(fetchRequest)")
         
         do {
             let fetchData = try context.fetch(fetchRequest)
             let task = fetchData[0] as! NSManagedObject
-            task.setValue(taskName, forKey: "name")
-            task.setValue(dueDate, forKey: "dueDate")
+            task.setValue(taskName, forKey: Task.Key.name.rawValue)
+            task.setValue(dueDate, forKey: Task.Key.dueDate.rawValue)
             do {
                 try context.save()
                 completion?()

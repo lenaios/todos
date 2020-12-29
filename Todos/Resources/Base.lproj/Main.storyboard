@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="paZ-Gp-Vgx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="paZ-Gp-Vgx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,11 +17,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2ai-lh-MJK">
-                                <rect key="frame" x="0.0" y="160" width="414" height="702"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="6Ix-2y-kro">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+ New Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R8S-8g-jzr">
+                                            <rect key="frame" x="16" y="0.0" width="382" height="52"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="didTapTextField" destination="BYZ-38-t0r" eventType="editingDidBegin" id="AZ1-vZ-FP6"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="R8S-8g-jzr" secondAttribute="trailing" constant="16" id="4az-K6-ijw"/>
+                                        <constraint firstAttribute="bottom" secondItem="R8S-8g-jzr" secondAttribute="bottom" id="Dbr-WB-iPD"/>
+                                        <constraint firstItem="R8S-8g-jzr" firstAttribute="leading" secondItem="6Ix-2y-kro" secondAttribute="leading" constant="16" id="h2q-lb-Lpi"/>
+                                        <constraint firstItem="R8S-8g-jzr" firstAttribute="top" secondItem="6Ix-2y-kro" secondAttribute="top" id="jkd-e5-Yyn"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="TwL-Si-2TH" detailTextLabel="wXZ-uo-DW1" style="IBUITableViewCellStyleSubtitle" id="TQY-Qb-Mog">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="80" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TQY-Qb-Mog" id="weE-94-RFs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
@@ -47,28 +68,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+ New Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R8S-8g-jzr">
-                                <rect key="frame" x="20" y="98" width="374" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="m1s-JZ-MKP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="didTapTextField" destination="BYZ-38-t0r" eventType="editingDidBegin" id="AZ1-vZ-FP6"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2ai-lh-MJK" firstAttribute="top" secondItem="R8S-8g-jzr" secondAttribute="bottom" constant="10" id="ATU-l5-LpL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2ai-lh-MJK" secondAttribute="bottom" id="EGM-We-S46"/>
-                            <constraint firstItem="R8S-8g-jzr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ggl-xK-lNX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2ai-lh-MJK" secondAttribute="trailing" id="NEn-7L-8g1"/>
-                            <constraint firstItem="2ai-lh-MJK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YLw-2P-Iye"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R8S-8g-jzr" secondAttribute="trailing" constant="20" id="qk3-tx-9HD"/>
-                            <constraint firstItem="R8S-8g-jzr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="vbK-3d-Nxr"/>
+                            <constraint firstItem="2ai-lh-MJK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4Hw-87-ErY"/>
+                            <constraint firstItem="2ai-lh-MJK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9jo-Wn-asK"/>
+                            <constraint firstItem="2ai-lh-MJK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HhY-VB-ZxC"/>
+                            <constraint firstItem="2ai-lh-MJK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="S6s-lj-2P8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To-dos" id="KJE-TR-sHW">
