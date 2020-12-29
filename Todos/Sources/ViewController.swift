@@ -29,7 +29,6 @@ class ViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         fetchTasks()
     }
@@ -42,16 +41,18 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func didTapAddButton() {
-//        guard let entryVC = storyboard?.instantiateViewController(identifier: "entry") as? EntryViewController else { return }
-//        navigationController?.pushViewController(entryVC, animated: true)
-//        entryVC.completionHandler = { [weak self] in self?.fetchTasks() }
-    }
-    
-    @IBAction func didTapTextField() {
+    func showEntryVC() {
         guard let entryVC = storyboard?.instantiateViewController(identifier: "entry") as? EntryViewController else { return }
         navigationController?.pushViewController(entryVC, animated: true)
         entryVC.completionHandler = { [weak self] in self?.fetchTasks() }
+    }
+    
+    @IBAction func didTapAddButton() {
+        showEntryVC()
+    }
+    
+    @IBAction func didTapTextField() {
+        showEntryVC()
     }
 }
 

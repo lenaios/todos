@@ -47,7 +47,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
                 print("auth success!")
                 DispatchQueue.main.async {
                     // setting, triger, request user notification
-                    strongSelf.scheduleTest(taskName: taskName, dueDate: strongSelf.dueDate.date)
+                    strongSelf.schedulePush(taskName: taskName, dueDate: strongSelf.dueDate.date)
                 }
             }
         }
@@ -55,7 +55,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    func scheduleTest(taskName: String, dueDate: Date) {
+    func schedulePush(taskName: String, dueDate: Date) {
         let content = UNMutableNotificationContent()
         content.title = taskName
         content.sound = .default

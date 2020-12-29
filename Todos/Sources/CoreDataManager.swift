@@ -26,7 +26,7 @@ class CoreDataManager {
     }
     
     @discardableResult
-    func insertTask(taskName: String, dueDate: Date, completion: (() -> Void)?) -> Bool { // Task 객체로 받을 수 없나?
+    func insertTask(taskName: String, dueDate: Date, completion: (() -> Void)?) -> Bool { // Task stuct 활용할수도
         let entity = NSEntityDescription.entity(forEntityName: "Task", in: context)
         if let entity = entity {
             let task = NSManagedObject(entity: entity, insertInto: context)
