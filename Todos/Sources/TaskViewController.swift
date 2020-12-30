@@ -50,7 +50,10 @@ extension TaskViewController {
 extension TaskViewController {
     @objc func deleteTask() {
         guard let model = model else { return }
-        CoreDataManager.shared.deleteTask(object: model, completion: completionHandler)
+        let result = CoreDataManager.shared.deleteTask(object: model)
+        if result {
+            completionHandler?()
+        }
         navigationController?.popViewController(animated: true)
     }
 }
@@ -63,7 +66,11 @@ extension TaskViewController: UITextFieldDelegate {
               let id = model?.name else {
             return false
         }
-        CoreDataManager.shared.updatetask(id: id, taskName: text, dueDate: Date(), completion: completionHandler)
+        
+        let result = CoreDataManager.shared.updatetask(id: id, taskName: text, dueDate: dueDate.date)
+        if result {
+            completionHandler?()
+        }
         navigationController?.popViewController(animated: true)
         return true
     }

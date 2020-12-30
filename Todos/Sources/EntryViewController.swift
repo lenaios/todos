@@ -91,7 +91,10 @@ extension EntryViewController {
             return
         }
         
-        CoreDataManager.shared.insertTask(taskName: taskName, dueDate: dueDate.date, completion: completionHandler)
+        let result = CoreDataManager.shared.insertTask(taskName: taskName, dueDate: dueDate.date)
+        if result {
+            completionHandler?()
+        }
         
         // UserNotification
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] (success, error) in

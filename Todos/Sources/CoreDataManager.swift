@@ -25,8 +25,7 @@ class CoreDataManager {
         }
     }
     
-    @discardableResult
-    func insertTask(taskName: String, dueDate: Date, completion: (() -> Void)?) -> Bool { // Task stuct 활용할수도
+    func insertTask(taskName: String, dueDate: Date) -> Bool {
         let entity = NSEntityDescription.entity(forEntityName: "Task", in: context)
         if let entity = entity {
             let task = NSManagedObject(entity: entity, insertInto: context)
@@ -34,21 +33,20 @@ class CoreDataManager {
             task.setValue(dueDate, forKey: Task.Key.dueDate.rawValue)
             do {
                 try context.save()
-                completion?()
+                return true
             } catch {
                 print(error.localizedDescription)
                 return false
             }
+        } else {
+            return false
         }
-        return true
     }
     
-    @discardableResult
-    func deleteTask(object: NSManagedObject, completion: (() -> Void)?) -> Bool {
+    func deleteTask(object: NSManagedObject) -> Bool {
         self.context.delete(object)
         do{
             try self.context.save()
-            completion?()
             return true
         } catch {
             print(error.localizedDescription)
@@ -56,10 +54,9 @@ class CoreDataManager {
         }
     }
     
-    @discardableResult
-    func updatetask(id: String, taskName: String, dueDate: Date, completion: (() -> Void)?) -> Bool {
+    func updatetask(id: String, taskName: String, dueDate: Date) -> Bool {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult>
-            = NSFetchRequest<NSFetchRequestResult>(entityName: Task.Key.dueDate.rawValue)
+            = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         fetchRequest.predicate = NSPredicate(format: "name = %@", NSString(string: id))
         print("updating: \(fetchRequest)")
         
@@ -70,7 +67,7 @@ class CoreDataManager {
             task.setValue(dueDate, forKey: Task.Key.dueDate.rawValue)
             do {
                 try context.save()
-                completion?()
+                return true
             } catch {
                 print(error.localizedDescription)
                 return false
@@ -79,7 +76,6 @@ class CoreDataManager {
             print(error.localizedDescription)
             return false
         }
-        return true
     }
 }
 
