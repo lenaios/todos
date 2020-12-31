@@ -83,6 +83,7 @@ extension ViewController {
                 as? EntryViewController else { return }
         navigationController?.pushViewController(entryVC, animated: true)
         entryVC.completionHandler = { [weak self] in self?.fetchTasks() }
+        entryVC.status = "entry"
     }
 }
 
@@ -117,10 +118,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let taskVC = storyboard?.instantiateViewController(identifier: "task") as? TaskViewController else { return }
-        taskVC.configure(model: taskData[indexPath.row])
-        taskVC.completionHandler = { [weak self] in self?.fetchTasks() }
-        navigationController?.pushViewController(taskVC, animated: true)
+        guard let entryVC = storyboard?.instantiateViewController(identifier: "entry") as? EntryViewController else { return }
+        entryVC.configure(model: taskData[indexPath.row])
+        entryVC.completionHandler = { [weak self] in self?.fetchTasks() }
+        entryVC.status = "edit"
+        navigationController?.pushViewController(entryVC, animated: true)
     }
     
     // tableView editingStyle
@@ -134,20 +136,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.beginUpdates()
             
             // delete data
-            CoreDataManager.shared.deleteTask(object: taskData[indexPath.row], completion: nil)
+            if CoreDataManager.shared.deleteTask(object: taskData[indexPath.row]) { fetchTasks() }
             
             taskData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
     }
-    
-    // tableView Header
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return ""
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 62.0
-//    }
 }

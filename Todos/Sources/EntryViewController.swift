@@ -19,6 +19,8 @@ import UserNotifications
 class EntryViewController: UIViewController {
     
     // MARK: Properties
+    var status: String?
+    var model: Task?
     var completionHandler: (() -> Void)?
     
     // MARK: UI
@@ -35,19 +37,36 @@ class EntryViewController: UIViewController {
 // MARK: - Helpers
 extension EntryViewController {
     func setupUI() {
-        //navigationItem.largeTitleDisplayMode = .never
-        
-        let rightBarButtonItem = UIBarButtonItem(
-            title: "Save",
-            style: .done,
-            target: self,
-            action: #selector(didTapSaveButton)
-        )
-        
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-        
+        if status == "entry" {
+            let rightBarButtonItem = UIBarButtonItem(
+                title: "Save",
+                style: .done,
+                target: self,
+                action: #selector(didTapSaveButton)
+            )
+            
+            navigationItem.rightBarButtonItem = rightBarButtonItem
+            
+            
+            taskTextField.becomeFirstResponder()
+            
+        } else if status == "edit" {
+            let rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .trash,
+                target: self,
+                action: #selector(deleteTask)
+            )
+            navigationItem.rightBarButtonItem = rightBarButtonItem
+            
+            guard let task = model else { return }
+            taskTextField.text = task.name
+            dueDate.date = task.dueDate ?? Date()
+        }
         taskTextField.delegate = self
-        taskTextField.becomeFirstResponder()
+    }
+    
+    func configure(model: Task) {
+        self.model = model
     }
     
     func schedulePush(taskName: String, dueDate: Date) {
@@ -112,12 +131,37 @@ extension EntryViewController {
         
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func deleteTask() {
+        guard let model = model else { return }
+        let result = CoreDataManager.shared.deleteTask(object: model)
+        if result {
+            completionHandler?()
+        }
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - TextFieldDelegate
 extension EntryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         taskTextField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if status == "edit" {
+            guard let text = textField.text,
+                  let id = model?.name else {
+                return false
+            }
+            
+            let result = CoreDataManager.shared.updatetask(id: id, taskName: text, dueDate: dueDate.date)
+            if result {
+                completionHandler?()
+            }
+            navigationController?.popViewController(animated: true)
+        }
         return true
     }
 }

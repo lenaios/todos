@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="paZ-Gp-Vgx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="paZ-Gp-Vgx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -160,73 +160,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GjN-og-fCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1198.5507246376812" y="93.75"/>
-        </scene>
-        <!--Task View Controller-->
-        <scene sceneID="jYQ-WF-K1R">
-            <objects>
-                <viewController storyboardIdentifier="task" id="Yps-AF-QzO" customClass="TaskViewController" customModule="Todos" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="De7-zw-MPe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auw-EP-gk1">
-                                <rect key="frame" x="20" y="64" width="374" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="pbp-sX-Aty"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUs-Zm-ESV">
-                                <rect key="frame" x="20" y="126" width="374" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="yik-l0-fWN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAn-ln-3hK">
-                                <rect key="frame" x="20" y="218" width="374" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="A8G-v0-STw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xpy-PN-QYC">
-                                <rect key="frame" x="20" y="290" width="374" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="tGz-xh-A9Y"/>
-                                </constraints>
-                            </datePicker>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8lm-nN-iOV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="xpy-PN-QYC" firstAttribute="leading" secondItem="8lm-nN-iOV" secondAttribute="leading" constant="20" id="2Tb-59-0rB"/>
-                            <constraint firstItem="zAn-ln-3hK" firstAttribute="leading" secondItem="8lm-nN-iOV" secondAttribute="leading" constant="20" id="7RJ-yZ-kL3"/>
-                            <constraint firstItem="HUs-Zm-ESV" firstAttribute="leading" secondItem="8lm-nN-iOV" secondAttribute="leading" constant="20" id="80p-NY-m7K"/>
-                            <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="zAn-ln-3hK" secondAttribute="trailing" constant="20" id="ACx-jh-tVx"/>
-                            <constraint firstItem="HUs-Zm-ESV" firstAttribute="top" secondItem="auw-EP-gk1" secondAttribute="bottom" constant="10" id="BVT-m1-2SW"/>
-                            <constraint firstItem="auw-EP-gk1" firstAttribute="leading" secondItem="8lm-nN-iOV" secondAttribute="leading" constant="20" id="DAu-OZ-lpN"/>
-                            <constraint firstItem="xpy-PN-QYC" firstAttribute="top" secondItem="zAn-ln-3hK" secondAttribute="bottom" constant="20" id="RJU-X3-t2M"/>
-                            <constraint firstItem="zAn-ln-3hK" firstAttribute="top" secondItem="HUs-Zm-ESV" secondAttribute="bottom" constant="40" id="dsD-NA-7sw"/>
-                            <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="xpy-PN-QYC" secondAttribute="trailing" constant="20" id="fm8-56-7wp"/>
-                            <constraint firstItem="auw-EP-gk1" firstAttribute="top" secondItem="8lm-nN-iOV" secondAttribute="top" constant="20" id="mjJ-4U-Qym"/>
-                            <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="HUs-Zm-ESV" secondAttribute="trailing" constant="20" id="rUQ-ew-W45"/>
-                            <constraint firstItem="8lm-nN-iOV" firstAttribute="trailing" secondItem="auw-EP-gk1" secondAttribute="trailing" constant="20" id="zwq-6x-lP4"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dueDate" destination="xpy-PN-QYC" id="z00-XN-ve3"/>
-                        <outlet property="taskNameTextField" destination="HUs-Zm-ESV" id="338-Xu-cG0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JdI-hq-V8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1873.913043478261" y="93.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ymz-13-9wO">
